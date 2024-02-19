@@ -33,3 +33,16 @@
     SELECT min(rental_date) as fecha_mas_vieja, max(rental_date) as fecha_mayor
     from rental
     WHERE return_date IS NOT NULL;
+
+8.
+    SELECT title as peliculas, count(actor_id) as actores FROM film f
+    JOIN film_actor fa ON f.film_id = fa.film_id
+    GROUP BY f.film_id
+    ORDER BY actor_iD ASC LIMIT 10;
+
+9.
+    SELECT p.title as pelicula, count(*) as alquileres
+    FROM film p JOIN inventory i ON p.film_id = i.film_id
+    JOIN rental r ON i.inventory_id = r.inventory_id
+    GROUP BY p.film_id
+    ORDER BY alquileres DESC LIMIT 1 OFFSET 2;
